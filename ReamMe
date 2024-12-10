@@ -1,0 +1,82 @@
+This repository aims to study vector meson production at UPCs at Muon-Ion Collider, EIC, LHeC. The event generotor is eSTARlight
+
+*************************************************************DOWNLOAD eSTARlight*******************************************************
+eSTARlight:https://github.com/eic/estarlight
+
+Please follow the instructions on the above website or the below steps:
+1.make a directory where you would like to store eSTARlight,see "/home/fl52/MuIC", so type:
+mkdir MuIC 
+
+2. type:
+cd MuIC
+
+3.Try to download the code of eSTARLlight by simply typing: 
+git clone https://github.com/eic/estarlight.git
+(make sure you have found "estarlight" in the "MuIC" directory)
+
+4.Type:
+cd estarlight 
+mkdir build 
+cd build 
+cmake ..
+make 
+
+5.After step4, you will find "e_starlight" in the "estarlight/build" directory.
+The e_starlight is the executable, you can simply run it by type "./e_starlight". But before that, you need to modify inputfile, to do that see next secions.
+***********************************************************How to generate events with eSTARlight?****************************************
+Before you start generating events, try to decide the following parameters:
+(i)TARGET beam type: TARGET_BEAM_Z, TARGET_BEAM_A 
+(ii)energy of two beams: ELECTRON_BEAM_GAMMA, TARGET_BEAM_GAMMA 
+!!!IMPORTANT!!! the GAMMA is the Lorentz factor: ELECTRON_BEAM_GAMMA=E/m_e in the God-Given unit（h_bar=c=1）, E is the energy of electron beam,m_e is the electron mass;
+                                                 TARGET_BEAM_GAMMA  =E/m_A in the God-Given unit（h_bar=c=1）, E is the energy of ion      beam,m_A is the ion      mass;
+
+A reference table: will appear in the near future 
+
+(iii) number of events you would like to genetate: N_EVENTS
+(iV) which type of vector meson you woule like to generate: PROD_PID 
+To generate J/psi->mu+mu-, set PROD_PID=443013
+(V) Q2 range: MIN_GAMMA_Q2, MAX_GAMMA_Q2
+you can set MIN_GAMMA_Q2=0 & MAX_GAMMA_Q2=1000, so that you do not want to apply a cut on Q2 
+
+If you have figured out the above parameters , congratulate! you are just one step from having your own Vector Meson. 
+
+Type: 
+cd /home/fl52/MuIC/estarlight/
+ls ./
+
+You will see a file named as "slight.in". To see it, type 
+vim slight.in
+
+Then, find "TARGET_BEAM_Z","TARGET_BEAM_A","N_EVENTS","ELECTRON_BEAM_GAMMA","TARGET_BEAM_GAMMA","PROD_PID","MIN_GAMMA_Q2","MAX_GAMMA_Q2"
+and modify them.
+
+Here comes the last step, type:
+cd build 
+mv ../slight.in ./
+./e_starlight  
+
+You will be able to find "slight.out", which contains generated events.
+
+
+***************************************************************How to analyze the generated events*******************************************
+
+
+I will add this section soon!  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
