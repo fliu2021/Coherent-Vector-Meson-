@@ -150,6 +150,15 @@ Processed 10 events
 !!!!!PLEASE YOU Clearly see "Considering the electron mass. Mass = 0.000510999 "
 Please use the "ConvertStarlightAsciiToTree.C" in this repositories. 
 
+This is because in the original "ConvertStarlightAsciiToTree.C" , they define " int A, Z" 
+in some system(like bonner lab machine CMSSW), A and Z are not set to be 0.
+
+
+**************************************************************How to get a MuSTARlight ? **************************************************
+
+
+
+
 
 
 
