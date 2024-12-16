@@ -59,17 +59,96 @@ You will be able to find "slight.out", which contains generated events.
 
 
 ***************************************************************How to analyze the generated events*******************************************
+A generated event in "slight.out" looks like:
+-------------------------------------------------------------------------------------------------
+| EVENT: 1 2 1                                                                                  |
+| VERTEX: 0.000000000000000 0.000000000000000 0.000000000000000 0.000000000000000 1 0 0 2       |
+| GAMMA: 1204.399169921875000 0.000038904508983                                                 |
+| t: -0.740201941554075                                                                         |
+| TARGET: -0.781915076297830 0.354127269042958 273.840582542420862 273.843535251270680          |
+| SOURCE: -0.002650225127551 0.005239822034966 -15.981813961174339 15.981815048115450           |
+| TRACK:  5 0.258071246992295 1.314105845378296 -0.781506065428195 1 0 0 -13                    |
+| TRACK:  6 0.526494054430937 -1.673472936457308 -0.013205842984153 1 1 0 13                    |
+-------------------------------------------------------------------------------------------------
+The following content is from "Readme.pdf" of estarlight
+*EVENT: n ntracks nvertices 
+where n is the event number (starting with 1), ntracks is the number 
+of tracks in the event, and nvertices is the number of vertices in 
+the event (eSTARlight does not produce events with more than one 
+vertex).
+EVENT line is followed by a description of the vertex, with the 
+format
 
+*VERTEX: x y z t nv nproc nparent ndaughters 
+where x, y, z and t are the 4-vector components of the vertex 
+location, nv is the vertex number, nproc is a number intended to 
+represent physical process (always set to 0), nparent is the track 
+number of parent track (0 for primary vertex) and ndaughters is the 
+number of daughter tracks from this vertex.
+This is followed by a line describing the kinematics of the photon in 
+the reference frame where the target (p or A) is at rest.
 
-I will add this section soon!  
+*GAMMA: k Q2 
+where k is the energy of the photon and Q2 is the invariant mass of 
+the virtual photon.
+This is followed by information related to the scattered target (X = 
+p or A) which emerges from the collision.
 
+*t: event_t 
+where, as expected, event_t is the four momentum transfer squared at 
+the target vertex.
 
+*TARGET: px py pz E 
+where px, py and pz are the three vector components of the scattered 
+target three vector and E is it’s energy.
+The information related to the scattered target is followed by the 
+scattered electron or source.
 
+*SOURCE: px py pz E 
+where, again, px, py and pz are the components of the outgoing 
+electron three vector and E is it’s energy.
+This is followed by a series of lines describing each of the daughter 
+tracks emanating from this vertex. Each track line has the format
 
+*TRACK: GPID px py pz nev ntr stopv PDGPID 
+where GPID is the Geant particle id code, px, py and pz are the three 
+vector components of the track's momentum, nev is the event number, 
+ntr is the number of this track within the vertex (starting with 0), 
+stopv is the vertex number where track ends (0 if track does not 
+terminate within the event), and PDGPID is the Monte Carlo particle 
+ID code endorsed by the Particle Data Group
 
+-----You can read "slight.out" directly and analyze the events. However there is a quick method to convert the "slight" into rootfile 
+and store events in TTree. 
 
+See below.
+*****************************************************Store the event in TTree***************************************************
+Type:
+cd estarligh/build 
 
+make sure you have alreay got "slight.out" in the /build, the type:
 
+cp ../utils/ConvertStarlightAsciiToTree.C ./
+root ConvertStarlightAsciiToTree.C
+
+When the running end, you should see: 
+---------------------------------------------------------------------------------------
+root [0] 
+Processing ConvertStarlightAsciiToTree.C...
+CONFIG_OPT: 12 443013 10 1 0 5574531
+ -------------------- Simulation set up -------------------- 
+prod_id: 12	 part_id: 443013	 nevents: 10
+q_glauber: 1	 impulse: 0	 rnd_seed: 5574531
+ ___________________________________________________________ 
+Considering the electron mass.
+Mass = 0.000510999
+Considering the proton mass.
+Mass = 0.938272
+Processed 10 events
+-----------------------------------------------------------------------------------------
+
+!!!!!PLEASE YOU Clearly see "Considering the electron mass. Mass = 0.000510999 "
+Please use the "ConvertStarlightAsciiToTree.C" in this repositories. 
 
 
 
