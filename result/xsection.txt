@@ -1,0 +1,22 @@
+
+
+
+ep:
+		    Q2<0.01      		 1<Q2<8      		Q2>50     		allQ2
+eRHIC		6.460 nanob 	  509.690 picob.	1.424 picob.	   9.087 nanob.
+LHeC		36.942 nanob.		2.625 nanob.	8.312 picob.	   50.428 nanob.
+MuIC 		31.239 nanob.		2.235 nanob.	7.043 picob.	   42.725 nanob.
+MuIC2		48.761 nanob.		3.429 nanob.	10.927 picob.	   66.376 nanob.
+LHmuC		112.544 nanob.		7.736 nanob.	24.949 picob.	   152.273 nanob.
+
+
+
+eA:
+		    Q2<0.01      		 1<Q2<8      		Q2>50     		allQ2
+eRHIC		1.398 microb.		75.088 nanob.	1.043 picob.	  1.961 microb.
+LHeC		11.763 microb.		550.644 nanob.	17.523 picob.	  15.644 microb.
+MuIC        9.149 microb.		432.601 nanob.	13.308 picob.	  12.216 microb.
+LHmuC		30.872 microb.		1.302 microb.	47.254 picob.	  39.731 microb.
+
+
+
